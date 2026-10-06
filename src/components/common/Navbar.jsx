@@ -16,7 +16,8 @@ import {
   Star, 
   Sparkles,
   Footprints,
-  Leaf
+  Leaf,
+  Presentation
 } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
 import { useAuthStore } from '../../store/useAuthStore';
@@ -30,6 +31,7 @@ const navItems = [
   { path: '/actions', label: 'Plan', icon: CheckSquare },
   { path: '/leaderboard', label: 'Leaderboard', icon: Trophy },
   { path: '/learn', label: 'Learn', icon: BookOpen },
+  { path: '/pitch', label: 'Pitch Deck', icon: Presentation },
 ];
 
 export default function Navbar() {

@@ -5,7 +5,8 @@ import { calculateSimulatedMetrics, TIME_HORIZONS, SCENARIOS } from '../data/sce
 import CityCanvas from '../components/simulator/CityCanvas';
 import ImpactMetrics from '../components/simulator/ImpactMetrics';
 import WhyExplainer from '../components/simulator/WhyExplainer';
-import { Sliders, Sparkles, MapPin, RotateCcw, Clock } from 'lucide-react';
+import ScenarioTrajectoryChart from '../components/simulator/ScenarioTrajectoryChart';
+import { Sliders, Sparkles, MapPin, RotateCcw, Clock, Layers } from 'lucide-react';
 import { useLeaderboardStore } from '../store/useLeaderboardStore';
 import { useToast } from '../components/common/Toast';
 
@@ -13,18 +14,18 @@ export default function WhatIf() {
   const { location, unlockBadge } = useStore();
   const { addPoints } = useLeaderboardStore();
   const { addToast } = useToast();
-  const [activeScenarios, setActiveScenarios] = useState(['noVehicles', 'tenXTrees']);
+  const [activeScenarios, setActiveScenarios] = useState(['noTrees']);
   const [intensity, setIntensity] = useState(1.0);
-  const [timeHorizon, setTimeHorizon] = useState('now');
-  const [baselineData, setBaselineData] = useState({ temp: 31, aqi: 178, pm25: 82 });
+  const [timeHorizon, setTimeHorizon] = useState('50yr');
+  const [baselineData, setBaselineData] = useState({ temp: 29, aqi: 85, pm25: 42 });
 
   useEffect(() => {
     fetchLiveEnvironmentalData(location.lat, location.lon, location.name).then(res => {
       if (res) {
         setBaselineData({
-          temp: res.weather?.temperature || 31,
-          aqi: res.airQuality?.aqi || 178,
-          pm25: res.airQuality?.pollutants?.pm2_5?.value || 82,
+          temp: res.weather?.temperature || 29,
+          aqi: res.airQuality?.aqi || 85,
+          pm25: res.airQuality?.pollutants?.pm2_5?.value || 42,
         });
       }
     });
@@ -57,23 +58,23 @@ export default function WhatIf() {
   const metrics = calculateSimulatedMetrics(baselineData, activeScenarios, intensity, timeMultiplier);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 space-y-6 pb-16">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 space-y-8 pb-16">
       {/* 1. Header & Scenarios Bar */}
       <div className="glass-card p-5 rounded-2xl border border-white/60 dark:border-emerald-500/20 space-y-4">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
           <div>
             <div className="flex items-center gap-2">
               <h1 className="text-xl sm:text-2xl font-heading font-black text-slate-900 dark:text-white uppercase tracking-tight">
-                SCENARIO Simulator
+                The What-If Simulator
               </h1>
-              <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-amber-500/15 text-amber-500 border border-amber-500/30 flex items-center gap-1">
+              <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 flex items-center gap-1">
                 <Sparkles className="w-3 h-3" />
-                Live Physics Engine
+                Live Physics & Digital Twin
               </span>
             </div>
             <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5 flex items-center gap-1">
               <MapPin className="w-3.5 h-3.5 text-emerald-500" />
-              <span>Location: {location.name} (Base Temp: {baselineData.temp}°C, AQI: {baselineData.aqi})</span>
+              <span>Location: {location.name} (Base Temp: {baselineData.temp}°C, Baseline Smog: AQI {baselineData.aqi})</span>
             </p>
           </div>
 
@@ -83,7 +84,7 @@ export default function WhatIf() {
               className="text-xs text-rose-500 hover:text-rose-600 dark:hover:text-rose-400 font-semibold flex items-center gap-1 transition-colors px-3 py-1 rounded-xl bg-rose-500/10 border border-rose-500/20"
             >
               <RotateCcw className="w-3.5 h-3.5" />
-              Reset
+              Reset Scenarios
             </button>
           )}
         </div>
@@ -109,7 +110,16 @@ export default function WhatIf() {
         </div>
       </div>
 
-      {/* 2. Hero Visual City Canvas & Real-Time Metrics Row */}
+      {/* 2. Multi-Horizon Parametric Scenario Trajectory Section matching Slide 4 */}
+      <ScenarioTrajectoryChart
+        baselineData={baselineData}
+        metrics={metrics}
+        activeScenarios={activeScenarios}
+        timeHorizon={timeHorizon}
+        setTimeHorizon={setTimeHorizon}
+      />
+
+      {/* 3. Hero Visual City Canvas & Real-Time Metrics Row */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
         {/* Left Column: Interactive Animated SVG City Canvas + Intensity Controls */}
         <div className="lg:col-span-7 space-y-4">
@@ -123,7 +133,7 @@ export default function WhatIf() {
           <div className="p-4 rounded-2xl glass-card border border-emerald-500/20 flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="w-full sm:w-1/2">
               <div className="flex items-center justify-between text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
-                <span>Intensity Scope</span>
+                <span>Intervention Scale / Scope</span>
                 <span className="font-mono text-emerald-600 dark:text-emerald-400">{Math.round(intensity * 100)}%</span>
               </div>
               <input
@@ -161,8 +171,9 @@ export default function WhatIf() {
         </div>
       </div>
 
-      {/* 3. Scientific Rationale & Explanations */}
+      {/* 4. Scientific Rationale & Explanations */}
       <WhyExplainer activeScenarios={activeScenarios} />
     </div>
   );
 }
+

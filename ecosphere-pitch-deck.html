@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EcoSphere — Understand. Simulate. Act. (Pitch Deck)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            brand: {
+              50: '#ecfdf5',
+              400: '#34d399',
+              500: '#10b981',
+              600: '#059669',
+              dark: '#050c0e',
+              surface: '#0d181b',
+              card: '#112226'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #050c0e;
+      color: #f1f5f9;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .slide {
+      display: none;
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+    }
+    .slide.active {
+      display: flex;
+      opacity: 1;
+    }
+    .glass-panel {
+      background: rgba(13, 27, 30, 0.75);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(16, 185, 129, 0.2);
+    }
+    .glow-emerald {
+      box-shadow: 0 0 40px -10px rgba(16, 185, 129, 0.3);
+    }
+    @media print {
+      body {
+        background: #050c0e !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .no-print {
+        display: none !important;
+      }
+      .slide {
+        display: flex !important;
+        opacity: 1 !important;
+        page-break-after: always;
+        height: 100vh !important;
+        width: 100vw !important;
+      }
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between p-6 sm:p-10 select-none overflow-x-hidden">
+
+  <!-- Background Ambient Mesh -->
+  <div class="fixed top-0 left-1/4 w-[500px] h-[500px] bg-emerald-500/10 rounded-full blur-[160px] pointer-events-none"></div>
+  <div class="fixed bottom-0 right-1/4 w-[500px] h-[500px] bg-sky-500/10 rounded-full blur-[160px] pointer-events-none"></div>
+
+  <!-- Top Navigation Bar -->
+  <header class="flex items-center justify-between z-20 pb-4 border-b border-emerald-500/15 no-print">
+    <div class="flex items-center gap-3">
+      <div class="w-8 h-8 rounded-full bg-emerald-500 flex items-center justify-center font-bold text-white shadow-lg">
+        🌍
+      </div>
+      <div>
+        <span class="font-bold text-sm text-white tracking-tight">EcoSphere</span>
+        <span class="text-xs text-emerald-400 block font-mono">Pitch Deck • College Innovation</span>
+      </div>
+    </div>
+
+    <!-- Slide Indicators -->
+    <div class="flex items-center gap-1.5" id="indicators">
+      <!-- Generated via JS -->
+    </div>
+
+    <div class="flex items-center gap-2">
+      <button onclick="window.print()" class="px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-700 text-xs font-semibold text-slate-300 hover:text-white transition-all">
+        🖨️ Export PDF
+      </button>
+      <button onclick="toggleFullscreen()" class="p-2 rounded-xl bg-slate-900 border border-slate-700 text-xs text-slate-300 hover:text-white transition-all" title="Toggle Fullscreen">
+        ⛶
+      </button>
+    </div>
+  </header>
+
+  <!-- Slide Stage -->
+  <main class="flex-1 flex items-center justify-center my-auto py-4 z-10 w-full max-w-6xl mx-auto min-h-[600px]">
+
+    <!-- SLIDE 1: Title -->
+    <section class="slide active flex-col justify-between w-full space-y-8" data-slide="1">
+      <div class="space-y-4">
+        <span class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 text-xs font-bold uppercase tracking-wider">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          SMART INNOVATION PITCH
+        </span>
+        <h1 class="text-6xl sm:text-7xl font-extrabold tracking-tight text-white leading-none">
+          EcoSphere
+        </h1>
+        <p class="text-2xl sm:text-3xl font-bold text-emerald-400">
+          Understand. Simulate. Act.
+        </p>
+        <p class="text-base sm:text-lg text-slate-300 max-w-2xl leading-relaxed">
+          A unified environmental intelligence platform connecting live air quality, microclimate, personal carbon footprint, and predictive scenario simulations.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+        <div class="p-5 rounded-2xl glass-panel border border-amber-500/30">
+          <span class="text-[10px] text-slate-400 uppercase font-bold block">AQI INDEX</span>
+          <span class="text-3xl font-black text-white">142</span>
+          <span class="text-[10px] text-amber-400 font-semibold block">(Live Demo)</span>
+        </div>
+        <div class="p-5 rounded-2xl glass-panel border border-sky-500/30">
+          <span class="text-[10px] text-slate-400 uppercase font-bold block">AMBIENT TEMP</span>
+          <span class="text-3xl font-black text-white">29°C</span>
+          <span class="text-[10px] text-sky-400 font-semibold block">(Telemetry)</span>
+        </div>
+        <div class="p-5 rounded-2xl glass-panel border border-emerald-500/30">
+          <span class="text-[10px] text-slate-400 uppercase font-bold block">ECO SCORE</span>
+          <span class="text-3xl font-black text-emerald-400">78<span class="text-sm text-slate-400">/100</span></span>
+          <span class="text-[10px] text-emerald-400 font-semibold block">(Top 22%)</span>
+        </div>
+        <div class="p-5 rounded-2xl glass-panel border border-purple-500/30">
+          <span class="text-[10px] text-slate-400 uppercase font-bold block">CO₂ FOOTPRINT</span>
+          <span class="text-3xl font-black text-white">1.84</span>
+          <span class="text-[10px] text-purple-400 font-semibold block">T/yr (Calibrated)</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 2: Problem Definition -->
+    <section class="slide flex-col justify-between w-full space-y-6" data-slide="2">
+      <div class="flex justify-between items-center">
+        <div>
+          <span class="text-xs font-bold text-rose-400 uppercase tracking-wider">PROBLEM DEFINITION</span>
+          <h2 class="text-3xl sm:text-5xl font-extrabold text-white mt-1">Environmental Data Is Fragmented</h2>
+          <p class="text-slate-300 text-sm mt-0.5">People can access environmental data — but rarely see how their choices connect to the surrounding ecosystem.</p>
+        </div>
+        <span class="px-3 py-1 rounded-full bg-rose-500/20 text-rose-400 border border-rose-500/30 text-xs font-bold">The Awareness-Action Gap</span>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <div class="lg:col-span-6 grid grid-cols-2 gap-3.5">
+          <div class="p-4 rounded-2xl glass-panel">
+            <h4 class="font-bold text-white text-sm">AQI Apps</h4>
+            <p class="text-xs text-slate-400 mt-1">Passive numbers (PM2.5, PM10) without contextual behavior recommendations.</p>
+          </div>
+          <div class="p-4 rounded-2xl glass-panel">
+            <h4 class="font-bold text-white text-sm">Weather Apps</h4>
+            <p class="text-xs text-slate-400 mt-1">Isolated temperature & forecasts siloed from pollution and heat vulnerability.</p>
+          </div>
+          <div class="p-4 rounded-2xl glass-panel">
+            <h4 class="font-bold text-white text-sm">Carbon Tools</h4>
+            <p class="text-xs text-slate-400 mt-1">Generic annual calculators detached from real-time city conditions and daily habits.</p>
+          </div>
+          <div class="p-4 rounded-2xl glass-panel">
+            <h4 class="font-bold text-white text-sm">Green Advice</h4>
+            <p class="text-xs text-slate-400 mt-1">Vague, non-quantified lifestyle tips lacking individual attribution and accountability.</p>
+          </div>
+        </div>
+
+        <div class="lg:col-span-6 p-6 rounded-2xl bg-slate-900/90 border border-slate-800 flex flex-col justify-between space-y-3">
+          <div class="flex justify-between text-xs font-bold text-slate-400">
+            <span>ENVIRONMENTAL CONVERSION FUNNEL</span>
+            <span class="text-rose-400">CRITICAL DROP-OFF</span>
+          </div>
+          <div class="space-y-2 text-xs">
+            <div>
+              <div class="flex justify-between mb-1"><span>01. INFORMATION (Access to AQI & News)</span><span class="font-mono font-bold">100%</span></div>
+              <div class="h-2 bg-slate-800 rounded-full"><div class="h-full bg-sky-400 rounded-full w-full"></div></div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-1"><span>02. AWARENESS (General Concern)</span><span class="font-mono font-bold text-sky-300">78%</span></div>
+              <div class="h-2 bg-slate-800 rounded-full"><div class="h-full bg-teal-400 rounded-full w-[78%]"></div></div>
+            </div>
+            <div class="py-1 px-3 bg-rose-500/15 border border-rose-500/30 text-rose-300 rounded-xl text-[11px] font-semibold">
+              📉 Steepest Drop (-52%): Disconnection from tangible options
+            </div>
+            <div>
+              <div class="flex justify-between mb-1"><span>03. UNDERSTANDING (Local Impact)</span><span class="font-mono font-bold text-amber-300">26%</span></div>
+              <div class="h-2 bg-slate-800 rounded-full"><div class="h-full bg-amber-400 rounded-full w-[26%]"></div></div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-1"><span>04. ACTION (Measurable Shift)</span><span class="font-mono font-bold text-rose-400">9%</span></div>
+              <div class="h-2 bg-slate-800 rounded-full"><div class="h-full bg-rose-500 rounded-full w-[9%]"></div></div>
+            </div>
+          </div>
+          <div class="p-2.5 bg-white/5 border border-white/10 rounded-xl text-xs text-slate-300">
+            <strong class="text-white">The Result: Cognitive Overload & Inaction.</strong> Users cannot pinpoint which personal decision moves the needle.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 3: Platform Architecture -->
+    <section class="slide flex-col justify-between w-full space-y-6" data-slide="3">
+      <div class="flex justify-between items-center">
+        <div>
+          <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider">PLATFORM ARCHITECTURE</span>
+          <h2 class="text-3xl sm:text-5xl font-extrabold text-white mt-1">One Platform. Three Steps.</h2>
+          <p class="text-slate-300 text-sm mt-0.5">EcoSphere links real-time environmental context to predictive consequences and personal accountability.</p>
+        </div>
+        <span class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-xs font-bold font-mono">Data → Simulation → Action</span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="p-6 rounded-3xl glass-panel border-emerald-500/30 flex flex-col justify-between space-y-3">
+          <div>
+            <span class="text-4xl font-black text-emerald-400">01</span>
+            <h3 class="text-xl font-bold text-white mt-2">UNDERSTAND</h3>
+            <p class="text-xs text-slate-400">Real-time hyperlocal intelligence across multi-source atmospheric sensors.</p>
+            <ul class="space-y-1.5 mt-4 text-xs text-slate-300">
+              <li>✓ Live station & model-based AQI</li>
+              <li>✓ 6 major criteria pollutants</li>
+              <li>✓ Ambient weather & humidity</li>
+              <li>✓ 7-Day predictive forecast</li>
+            </ul>
+          </div>
+          <span class="text-xs font-semibold text-emerald-400 pt-3 border-t border-slate-800">Telemetry Layer: Zero latency</span>
+        </div>
+
+        <div class="p-6 rounded-3xl glass-panel border-sky-500/30 flex flex-col justify-between space-y-3">
+          <div>
+            <span class="text-4xl font-black text-sky-400">02</span>
+            <h3 class="text-xl font-bold text-white mt-2">SIMULATE</h3>
+            <p class="text-xs text-slate-400">Interactive digital twin modeling systemic urban and policy interventions.</p>
+            <ul class="space-y-1.5 mt-4 text-xs text-slate-300">
+              <li>✓ What-if scenario testing</li>
+              <li>✓ Canopy & deforestation impacts</li>
+              <li>✓ +10 / +50 year horizon view</li>
+              <li>✓ Simplified parametric model</li>
+            </ul>
+          </div>
+          <span class="text-xs font-semibold text-sky-400 pt-3 border-t border-slate-800">Predictive Layer: Decision preview</span>
+        </div>
+
+        <div class="p-6 rounded-3xl glass-panel border-amber-500/30 flex flex-col justify-between space-y-3">
+          <div>
+            <span class="text-4xl font-black text-amber-400">03</span>
+            <h3 class="text-xl font-bold text-white mt-2">ACT</h3>
+            <p class="text-xs text-slate-400">Pragmatic behavior modification with quantified carbon and cost incentives.</p>
+            <ul class="space-y-1.5 mt-4 text-xs text-slate-300">
+              <li>✓ Dynamic personal carbon tally</li>
+              <li>✓ Ranked high-leverage swaps</li>
+              <li>✓ Eco Score tracking (0–100)</li>
+              <li>✓ Pledges & verified impact</li>
+            </ul>
+          </div>
+          <span class="text-xs font-semibold text-amber-400 pt-3 border-t border-slate-800">Behavior Layer: Quantified habits</span>
+        </div>
+      </div>
+
+      <div class="p-3 bg-emerald-500/10 border border-emerald-500/20 text-center text-xs text-emerald-300 font-semibold rounded-2xl">
+        🔄 Continuous Feedback Loop: Sense Local Air → Simulate Community Trajectory → Optimize Personal Decarbonization
+      </div>
+    </section>
+
+    <!-- SLIDE 4: Digital Twin Engine -->
+    <section class="slide flex-col justify-between w-full space-y-6" data-slide="4">
+      <div class="flex justify-between items-center">
+        <div>
+          <span class="text-xs font-bold text-sky-400 uppercase tracking-wider">DIGITAL TWIN ENGINE</span>
+          <h2 class="text-3xl sm:text-5xl font-extrabold text-white mt-1">The What-If Simulator</h2>
+          <p class="text-slate-300 text-sm mt-0.5">See the consequences before you act — interactive environmental scenario projection.</p>
+        </div>
+        <span class="px-3.5 py-1 rounded-full bg-amber-500/20 text-amber-400 border border-amber-500/30 text-xs font-bold">Scenario: 30% Tree Cover Reduction</span>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <div class="lg:col-span-5 space-y-3">
+          <div class="p-4 rounded-2xl glass-panel">
+            <div class="flex justify-between text-xs font-bold text-slate-400 mb-2"><span>Current City Baseline</span><span class="text-slate-300">Status Quo</span></div>
+            <div class="grid grid-cols-2 gap-2 text-xs">
+              <div class="p-2 bg-slate-950/60 rounded-xl">🌲 Tree Cover: 32%</div>
+              <div class="p-2 bg-slate-950/60 rounded-xl">🌡️ Microclimate: 29°C</div>
+              <div class="p-2 bg-slate-950/60 rounded-xl">💨 Particulate: AQI 85</div>
+              <div class="p-2 bg-slate-950/60 rounded-xl">🏥 Health: Baseline</div>
+            </div>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-rose-500/10 border border-rose-500/30">
+            <div class="flex justify-between text-xs font-bold text-rose-300 mb-2"><span>Simulated Scenario (+50 Years)</span><span class="text-rose-400">Severe Impact</span></div>
+            <div class="grid grid-cols-2 gap-2 text-xs text-rose-100">
+              <div class="p-2 bg-slate-950/60 rounded-xl">⚠️ Tree Cover: 11% (-21%)</div>
+              <div class="p-2 bg-slate-950/60 rounded-xl">🔥 Heat Island: +3.8°C</div>
+              <div class="p-2 bg-slate-950/60 rounded-xl">🌫️ Particulate: AQI 168</div>
+              <div class="p-2 bg-slate-950/60 rounded-xl">🫁 Respiratory: +42%</div>
+            </div>
+          </div>
+
+          <div class="p-3 bg-sky-500/10 border border-sky-500/20 text-xs text-slate-300 rounded-2xl">
+            <strong class="text-sky-400 block mb-0.5">Key Scenario Insight:</strong>
+            Urban tree loss triggers compounding feedback loops — surface heat absorption surges by 26%, doubling stagnation of PM2.5 particulates.
+          </div>
+        </div>
+
+        <div class="lg:col-span-7 p-6 rounded-3xl bg-slate-900/90 border border-slate-800 flex flex-col justify-between">
+          <div class="flex justify-between items-center mb-4">
+            <span class="text-xs font-bold uppercase text-slate-300">PARAMETRIC SCENARIO TRAJECTORY</span>
+            <div class="flex gap-3 text-xs font-semibold">
+              <span class="text-rose-400">● Temp & Smog Index</span>
+              <span class="text-emerald-400">● Green Resilience</span>
+            </div>
+          </div>
+
+          <!-- Visual SVG Trajectory Curve -->
+          <div class="h-56 w-full flex items-center justify-center relative">
+            <svg class="w-full h-full" viewBox="0 0 400 160">
+              <!-- Grid Lines -->
+              <line x1="40" y1="20" x2="380" y2="20" stroke="#1e293b" stroke-dasharray="4" />
+              <line x1="40" y1="70" x2="380" y2="70" stroke="#1e293b" stroke-dasharray="4" />
+              <line x1="40" y1="120" x2="380" y2="120" stroke="#1e293b" stroke-dasharray="4" />
+
+              <!-- Temp & Smog Red Curve -->
+              <path d="M 60 120 Q 200 80 340 30" fill="none" stroke="#ef4444" stroke-width="4" stroke-linecap="round" />
+              <circle cx="60" cy="120" r="6" fill="#ef4444" />
+              <circle cx="200" cy="80" r="6" fill="#ef4444" />
+              <circle cx="340" cy="30" r="7" fill="#ef4444" stroke="#ffffff" stroke-width="2" />
+              <text x="340" y="18" fill="#ef4444" font-size="10" font-weight="bold" text-anchor="middle">AQI 168 / +3.8°C</text>
+
+              <!-- Green Resilience Curve -->
+              <path d="M 60 40 Q 200 90 340 135" fill="none" stroke="#10b981" stroke-width="4" stroke-linecap="round" />
+              <circle cx="60" cy="40" r="6" fill="#10b981" />
+              <circle cx="200" cy="90" r="6" fill="#10b981" />
+              <circle cx="340" cy="135" r="7" fill="#10b981" stroke="#ffffff" stroke-width="2" />
+
+              <!-- X-Axis Labels -->
+              <text x="60" y="150" fill="#94a3b8" font-size="11" text-anchor="middle">Current</text>
+              <text x="200" y="150" fill="#94a3b8" font-size="11" text-anchor="middle">+10 Years</text>
+              <text x="340" y="150" fill="#94a3b8" font-size="11" text-anchor="middle">+50 Years</text>
+            </svg>
+          </div>
+
+          <span class="text-[10px] text-slate-500 text-right block">* Illustrative simulation — simplified parametric model, not a scientific forecast.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 5: Unified Environmental Dashboard -->
+    <section class="slide flex-col justify-between w-full space-y-6" data-slide="5">
+      <div class="flex justify-between items-center">
+        <div>
+          <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider">FEATURE SUITE</span>
+          <h2 class="text-3xl sm:text-5xl font-extrabold text-white mt-1">Unified Environmental Dashboard</h2>
+          <p class="text-slate-300 text-sm mt-0.5">Everything in one environmental cockpit — live sensors, carbon diagnostics, and predictive insights.</p>
+        </div>
+        <span class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-xs font-bold">LIVE UI DEMO BUILD</span>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div class="p-5 rounded-2xl glass-panel border-rose-500/30">
+          <div class="flex justify-between text-xs font-bold"><span class="text-slate-400">AIR QUALITY INDEX</span><span class="text-rose-400">UNHEALTHY</span></div>
+          <div class="text-4xl font-black text-white my-1">142 <span class="text-xs text-slate-400 font-normal">PM2.5 Primary</span></div>
+          <p class="text-xs text-slate-400">Sensitive groups should limit intense outdoor activity.</p>
+        </div>
+        <div class="p-5 rounded-2xl glass-panel border-sky-500/30">
+          <div class="flex justify-between text-xs font-bold"><span class="text-slate-400">MICROCLIMATE TELEMETRY</span><span class="text-sky-400">NEW DELHI</span></div>
+          <div class="text-4xl font-black text-white my-1">29°C <span class="text-xs text-slate-400 font-normal">Partly Cloudy</span></div>
+          <p class="text-xs text-slate-400">💧 Humidity: 64% • 💨 Wind: 14 km/h NW</p>
+        </div>
+        <div class="p-5 rounded-2xl glass-panel border-emerald-500/30">
+          <div class="flex justify-between text-xs font-bold"><span class="text-slate-400">PERSONAL ECO SCORE</span><span class="text-emerald-400">TOP 22%</span></div>
+          <div class="text-4xl font-black text-emerald-400 my-1">78<span class="text-lg text-slate-400">/100</span> <span class="text-xs text-emerald-400 font-normal">+6 pts</span></div>
+          <p class="text-xs text-slate-400">Annual Footprint: 1,840 kg CO₂/yr (Demo)</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="p-4 rounded-2xl bg-slate-900/80 border border-slate-800">
+          <span class="text-xs font-bold text-slate-400 uppercase">7-DAY ENVIRONMENTAL FORECAST</span>
+          <div class="grid grid-cols-7 gap-1 text-center text-xs pt-2">
+            <div class="p-1.5 rounded-lg bg-slate-950/60"><span class="text-[10px] text-slate-400 block">Mon</span><span class="font-bold">29°</span><span class="text-[9px] text-amber-400 font-mono block">138</span></div>
+            <div class="p-1.5 rounded-lg bg-slate-950/60"><span class="text-[10px] text-slate-400 block">Tue</span><span class="font-bold">30°</span><span class="text-[9px] text-amber-400 font-mono block">142</span></div>
+            <div class="p-1.5 rounded-lg bg-slate-950/60"><span class="text-[10px] text-slate-400 block">Wed</span><span class="font-bold">31°</span><span class="text-[9px] text-amber-400 font-mono block">145</span></div>
+            <div class="p-1.5 rounded-lg bg-slate-950/60"><span class="text-[10px] text-slate-400 block">Thu</span><span class="font-bold">29°</span><span class="text-[9px] text-amber-400 font-mono block">135</span></div>
+            <div class="p-1.5 rounded-lg bg-slate-950/60"><span class="text-[10px] text-slate-400 block">Fri</span><span class="font-bold">28°</span><span class="text-[9px] text-emerald-400 font-mono block">120</span></div>
+            <div class="p-1.5 rounded-lg bg-slate-950/60"><span class="text-[10px] text-slate-400 block">Sat</span><span class="font-bold">30°</span><span class="text-[9px] text-amber-400 font-mono block">130</span></div>
+            <div class="p-1.5 rounded-lg bg-slate-950/60"><span class="text-[10px] text-slate-400 block">Sun</span><span class="font-bold">29°</span><span class="text-[9px] text-emerald-400 font-mono block">115</span></div>
+          </div>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-slate-900/80 border border-slate-800">
+          <div class="flex justify-between text-xs font-bold text-slate-400"><span>6-CATEGORY POLLUTANT MATRIX</span><span>CONCENTRATION</span></div>
+          <div class="grid grid-cols-2 gap-2 text-xs pt-1.5">
+            <div class="flex justify-between p-1.5 bg-slate-950/60 rounded-lg"><span>PM2.5 (Fine)</span><span class="font-bold text-rose-400">84%</span></div>
+            <div class="flex justify-between p-1.5 bg-slate-950/60 rounded-lg"><span>PM10 (Dust)</span><span class="font-bold text-amber-400">62%</span></div>
+            <div class="flex justify-between p-1.5 bg-slate-950/60 rounded-lg"><span>NO₂ (Exhaust)</span><span class="font-bold text-amber-400">52%</span></div>
+            <div class="flex justify-between p-1.5 bg-slate-950/60 rounded-lg"><span>SO₂ (Industrial)</span><span class="font-bold text-emerald-400">24%</span></div>
+            <div class="flex justify-between p-1.5 bg-slate-950/60 rounded-lg"><span>CO (Carbon)</span><span class="font-bold text-emerald-400">31%</span></div>
+            <div class="flex justify-between p-1.5 bg-slate-950/60 rounded-lg"><span>O₃ (Ozone)</span><span class="font-bold text-amber-400">41%</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-3.5 px-4 bg-emerald-500/10 border border-emerald-500/30 flex justify-between items-center text-xs rounded-2xl">
+        <span><strong class="text-emerald-400 uppercase mr-2">Top Action:</strong> Switch 2 commute days/week to electric metro: <strong>Potential saving of 320 kg CO₂/year</strong></span>
+        <span class="font-bold text-emerald-400 bg-emerald-500/20 px-2.5 py-1 rounded-xl">+8 Eco Score Points</span>
+      </div>
+    </section>
+
+    <!-- SLIDE 6: Behavioral Engine -->
+    <section class="slide flex-col justify-between w-full space-y-6" data-slide="6">
+      <div class="flex justify-between items-center">
+        <div>
+          <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider">BEHAVIORAL ENGINE</span>
+          <h2 class="text-3xl sm:text-5xl font-extrabold text-white mt-1">From Numbers to Decisions</h2>
+          <p class="text-slate-300 text-sm mt-0.5">Translating abstract carbon metrics into ranked, achievable lifestyle adjustments.</p>
+        </div>
+        <span class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-xs font-bold">Quantified ROI</span>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center text-xs">
+        <div class="p-3 rounded-2xl glass-panel"><span class="text-[10px] text-slate-500 block">1. LIFESTYLE INPUTS</span><span class="font-bold text-white mt-0.5 block">Transport, Energy, Diet</span></div>
+        <div class="p-3 rounded-2xl glass-panel"><span class="text-[10px] text-slate-500 block">2. FOOTPRINT SCORE</span><span class="font-bold text-emerald-400 mt-0.5 block">1,840 kg CO₂/yr</span></div>
+        <div class="p-3 rounded-2xl glass-panel"><span class="text-[10px] text-slate-500 block">3. BENCHMARKS</span><span class="font-bold text-sky-400 mt-0.5 block">India 1.9T | Global 4.7T</span></div>
+        <div class="p-3 rounded-2xl glass-panel bg-emerald-500/10"><span class="text-[10px] text-emerald-400 block">4. TARGETED ACTIONS</span><span class="font-bold text-white mt-0.5 block">Ranked Interventions</span></div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <div class="lg:col-span-7 p-6 rounded-3xl glass-panel space-y-3">
+          <div class="flex justify-between text-xs font-bold text-slate-400"><span>POTENTIAL ANNUAL CO₂ SAVINGS (RANKED)</span><span class="font-mono">KG CO₂/YEAR</span></div>
+          <div class="space-y-3 pt-1">
+            <div>
+              <div class="flex justify-between text-xs mb-1"><span>Commute Mode Shift (Metro / Bus 3 days/week)</span><span class="font-bold text-emerald-400 font-mono">420 kg</span></div>
+              <div class="h-3 bg-slate-800 rounded-full"><div class="h-full bg-emerald-400 rounded-full w-full"></div></div>
+            </div>
+            <div>
+              <div class="flex justify-between text-xs mb-1"><span>Home Energy Optimization (BLDC fans, LED + AC @ 24°C)</span><span class="font-bold text-sky-400 font-mono">280 kg</span></div>
+              <div class="h-3 bg-slate-800 rounded-full"><div class="h-full bg-sky-400 rounded-full w-[67%]"></div></div>
+            </div>
+            <div>
+              <div class="flex justify-between text-xs mb-1"><span>Plant-Rich Diet Swaps (4 low-footprint meals/week)</span><span class="font-bold text-amber-400 font-mono">190 kg</span></div>
+              <div class="h-3 bg-slate-800 rounded-full"><div class="h-full bg-amber-400 rounded-full w-[45%]"></div></div>
+            </div>
+            <div>
+              <div class="flex justify-between text-xs mb-1"><span>Consumption & Longevity (Reduced fast fashion / e-waste)</span><span class="font-bold text-purple-400 font-mono">110 kg</span></div>
+              <div class="h-3 bg-slate-800 rounded-full"><div class="h-full bg-purple-400 rounded-full w-[26%]"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5 space-y-4 flex flex-col justify-between">
+          <div class="p-5 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 flex items-start gap-3.5">
+            <span class="text-3xl">🌲</span>
+            <div>
+              <span class="text-[10px] uppercase font-bold text-emerald-400 block">TREE-EQUIVALENT TRANSLATION</span>
+              <div class="text-xl font-black text-white">≈ 20 Mature Trees</div>
+              <p class="text-xs text-slate-300 mt-1 leading-relaxed">A 420 kg CO₂ reduction from commute mode-shifting equals the annual carbon sequestered by ~20 growing urban trees.</p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3">
+            <div class="p-4 rounded-2xl glass-panel"><span class="text-[10px] text-slate-400 uppercase font-bold block">Annual Cost Dividend</span><span class="text-lg font-black text-emerald-400 mt-1 block">₹14,200 Saved / Year</span></div>
+            <div class="p-4 rounded-2xl glass-panel"><span class="text-[10px] text-slate-400 uppercase font-bold block">Community Badge</span><span class="text-sm font-bold text-sky-400 mt-1 block">🏅 Delhi Transit Star</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 7: Engineering Stack -->
+    <section class="slide flex-col justify-between w-full space-y-6" data-slide="7">
+      <div class="flex justify-between items-center">
+        <div>
+          <span class="text-xs font-bold text-sky-400 uppercase tracking-wider">ENGINEERING STACK</span>
+          <h2 class="text-3xl sm:text-5xl font-extrabold text-white mt-1">Lightweight & Scalable Tech</h2>
+          <p class="text-slate-300 text-sm mt-0.5">Built for rapid response, zero API key dependencies, and seamless mobile execution.</p>
+        </div>
+        <span class="px-3.5 py-1 rounded-full bg-sky-500/20 text-sky-400 border border-sky-500/30 text-xs font-bold">Hackathon-Ready Architecture</span>
+      </div>
+
+      <div class="space-y-3">
+        <div class="p-4 rounded-2xl glass-panel flex justify-between items-center">
+          <span class="text-xs font-bold text-emerald-400 uppercase w-36 shrink-0">01. CLIENT TIER</span>
+          <div class="flex gap-2 text-xs"><span class="px-3 py-1 rounded-xl bg-slate-800">📱 Mobile Browser</span><span class="px-3 py-1 rounded-xl bg-slate-800">💻 Desktop Web App</span><span class="px-3 py-1 rounded-xl bg-slate-800">⚡ PWA Capability</span></div>
+        </div>
+        <div class="p-4 rounded-2xl glass-panel flex justify-between items-center">
+          <span class="text-xs font-bold text-sky-400 uppercase w-36 shrink-0">02. REACT CORE</span>
+          <div class="flex flex-wrap gap-2 text-xs"><span class="px-3 py-1 rounded-xl bg-slate-800">React 18 + Vite</span><span class="px-3 py-1 rounded-xl bg-slate-800">Tailwind CSS</span><span class="px-3 py-1 rounded-xl bg-slate-800">Framer Motion</span><span class="px-3 py-1 rounded-xl bg-slate-800">Recharts SVG</span><span class="px-3 py-1 rounded-xl bg-slate-800">Zustand</span></div>
+        </div>
+        <div class="p-4 rounded-2xl glass-panel flex justify-between items-center">
+          <span class="text-xs font-bold text-amber-400 uppercase w-36 shrink-0">03. APP ENGINES</span>
+          <div class="flex flex-wrap gap-2 text-xs"><span class="px-3 py-1 rounded-xl bg-slate-800">Carbon Calculator</span><span class="px-3 py-1 rounded-xl bg-slate-800">Scenario Engine (+10/+50Y)</span><span class="px-3 py-1 rounded-xl bg-slate-800">Eco Score Normalizer</span></div>
+        </div>
+        <div class="p-4 rounded-2xl glass-panel flex justify-between items-center">
+          <span class="text-xs font-bold text-purple-400 uppercase w-36 shrink-0">04. DATA LAYER</span>
+          <div class="flex flex-wrap gap-2 text-xs"><span class="px-3 py-1 rounded-xl bg-slate-800">Open-Meteo APIs (Weather)</span><span class="px-3 py-1 rounded-xl bg-slate-800">Model-Based AQI Feeds</span><span class="px-3 py-1 rounded-xl bg-slate-800">Offline Fallback</span></div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center text-xs">
+        <div class="p-3 rounded-2xl bg-emerald-500/10 border border-emerald-500/20"><span class="font-bold text-emerald-400 block">⚡ Sub-Second Speed</span><span class="text-[10px] text-slate-400">Vite SPA bundle</span></div>
+        <div class="p-3 rounded-2xl bg-sky-500/10 border border-sky-500/20"><span class="font-bold text-sky-400 block">📱 Mobile-First</span><span class="text-[10px] text-slate-400">Fluid viewport</span></div>
+        <div class="p-3 rounded-2xl bg-amber-500/10 border border-amber-500/20"><span class="font-bold text-amber-400 block">📦 Offline Cache</span><span class="text-[10px] text-slate-400">Preloaded demo sets</span></div>
+        <div class="p-3 rounded-2xl bg-purple-500/10 border border-purple-500/20"><span class="font-bold text-purple-400 block">🔑 Zero API Cost</span><span class="text-[10px] text-slate-400">Open-Meteo open tier</span></div>
+      </div>
+    </section>
+
+    <!-- SLIDE 8: Growth & Roadmap -->
+    <section class="slide flex-col justify-between w-full space-y-6" data-slide="8">
+      <div class="flex justify-between items-center">
+        <div>
+          <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider">GROWTH & ROADMAP</span>
+          <h2 class="text-3xl sm:text-5xl font-extrabold text-white mt-1">Making Awareness Actionable</h2>
+          <p class="text-slate-300 text-sm mt-0.5">Bridging individual actions with city-scale climate resilience.</p>
+        </div>
+        <span class="px-3.5 py-1 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-xs font-bold">Hackathon to Deployment</span>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <div class="lg:col-span-6 space-y-3">
+          <span class="text-xs font-bold uppercase text-slate-400 block">CORE IMPACT PILLARS (4 STRATEGIC VECTORS)</span>
+          <div class="grid grid-cols-2 gap-3 text-xs">
+            <div class="p-4 rounded-2xl glass-panel"><strong class="text-emerald-400 block mb-1">👤 Personalized</strong>Translates macro gigatons into direct personal kilograms and household savings.</div>
+            <div class="p-4 rounded-2xl glass-panel"><strong class="text-sky-400 block mb-1">📊 Visual</strong>Replaces complex sensor tables with intuitive scenarios and progress telemetry.</div>
+            <div class="p-4 rounded-2xl glass-panel"><strong class="text-amber-400 block mb-1">📍 India-Focused</strong>Tailored for Delhi-NCR microclimates, INR currency savings, and transit routes.</div>
+            <div class="p-4 rounded-2xl glass-panel"><strong class="text-purple-400 block mb-1">🎓 Expandable</strong>Ready for campus hackathons, colleges, schools, and civic green leagues.</div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-6 p-6 rounded-3xl bg-slate-900/90 border border-slate-800 flex flex-col justify-between space-y-3 text-xs">
+          <div class="flex justify-between font-bold text-slate-400"><span>EVOLUTIONARY ROADMAP</span><span class="text-emerald-400">EXECUTION PHASES</span></div>
+          <div class="p-3 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 flex justify-between items-center">
+            <div><strong class="text-emerald-400 block">PHASE 1 — NOW (MVP)</strong><span class="text-slate-300">Unified telemetry dashboard, personal carbon engine, 3-scenario simulator.</span></div>
+            <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-500 text-white shrink-0 ml-2">COMPLETED</span>
+          </div>
+          <div class="p-3 rounded-2xl bg-sky-500/10 border border-sky-500/30 flex justify-between items-center">
+            <div><strong class="text-sky-400 block">PHASE 2 — NEXT (Q3)</strong><span class="text-slate-300">Station-level sensor APIs, user auth, college cohort leaderboards & badges.</span></div>
+            <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-sky-500 text-white shrink-0 ml-2">IN PROGRESS</span>
+          </div>
+          <div class="p-3 rounded-2xl bg-slate-800/60 border border-slate-700 flex justify-between items-center">
+            <div><strong class="text-purple-400 block">PHASE 3 — FUTURE HORIZON</strong><span class="text-slate-400">Smart meter feeds, transit smart-card sync, regional languages & NGO credits.</span></div>
+            <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-700 text-slate-300 shrink-0 ml-2">PLANNED</span>
+          </div>
+          <span class="text-emerald-400 font-bold block pt-2 border-t border-slate-800">🎯 Target: 50,000 active student users across North Indian campuses.</span>
+        </div>
+      </div>
+
+      <div class="p-3 bg-emerald-500/10 border border-emerald-500/20 text-center text-xs text-slate-200 rounded-2xl">
+        <strong class="text-emerald-400 mr-2">OUR VISION:</strong> "Build a personal environmental intelligence layer for everyday planetary decisions."
+      </div>
+    </section>
+
+    <!-- SLIDE 9: Questions & Discussion -->
+    <section class="slide flex-col justify-between w-full space-y-8 py-10 text-center" data-slide="9">
+      <div class="space-y-3">
+        <span class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 text-xs font-bold uppercase tracking-wider">
+          COLLEGE INNOVATION PROJECT PITCH
+        </span>
+        <h1 class="text-6xl sm:text-7xl font-extrabold text-white">EcoSphere</h1>
+        <p class="text-2xl sm:text-3xl font-bold text-emerald-400">Understand. Simulate. Act.</p>
+      </div>
+
+      <div class="max-w-2xl mx-auto p-8 rounded-3xl glass-panel space-y-4">
+        <h3 class="text-2xl font-bold text-white">💬 Questions & Discussion</h3>
+        <p class="text-sm text-slate-300 leading-relaxed">
+          Thank you for your time. We welcome feedback on our simulation engine, telemetry integration, and campus deployment roadmap.
+        </p>
+        <div class="flex justify-center gap-3 pt-2 text-xs">
+          <span class="px-3.5 py-1.5 rounded-xl bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-bold">📡 Real-Time Telemetry</span>
+          <span class="px-3.5 py-1.5 rounded-xl bg-sky-500/20 text-sky-300 border border-sky-500/30 font-bold">🏙️ What-If Digital Twin</span>
+          <span class="px-3.5 py-1.5 rounded-xl bg-amber-500/20 text-amber-300 border border-amber-500/30 font-bold">🌱 Personal Decarbonization</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 10: Sources -->
+    <section class="slide flex-col justify-between w-full space-y-6" data-slide="10">
+      <div>
+        <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">APPENDIX</span>
+        <h2 class="text-3xl sm:text-5xl font-extrabold text-white mt-1">Image & Data Sources</h2>
+      </div>
+
+      <div class="space-y-4 max-w-4xl">
+        <div class="p-5 rounded-2xl glass-panel space-y-2">
+          <span class="text-xs font-bold text-emerald-400 uppercase">Futuristic Smart City Visuals</span>
+          <p class="text-xs text-slate-300 font-mono break-all">https://www.ierek.com/news/wp-content/uploads/2025/06/Black-and-Green-Modern-Futuristic-Digital-Transformation-with-AI-Technology.png</p>
+          <span class="text-[11px] text-slate-400">Source: www.ierek.com</span>
+        </div>
+        <div class="p-5 rounded-2xl glass-panel space-y-2">
+          <span class="text-xs font-bold text-sky-400 uppercase">Atmospheric Telemetry Vectors</span>
+          <p class="text-xs text-slate-300 font-mono break-all">https://elements-resized.envatousercontent.com/elements-video-cover-images/files/7f6bf28c-37b3-4559-ab34-f8c2f41de0c4/inline_image_preview.jpg</p>
+          <span class="text-[11px] text-slate-400">Source: elements.envato.com</span>
+        </div>
+        <div class="p-5 rounded-2xl glass-panel space-y-2">
+          <span class="text-xs font-bold text-amber-400 uppercase">Scientific Research Calibration</span>
+          <p class="text-xs text-slate-300">Open-Meteo Air Quality & Weather API, IPCC AR6 WG3 Climate Mitigation Database, and CEA India Baseline CO₂ Emissions.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Bottom Navigation Toolbar -->
+  <footer class="flex items-center justify-between z-20 pt-4 border-t border-emerald-500/15 no-print">
+    <button onclick="prevSlide()" class="flex items-center gap-1.5 px-4 py-2 rounded-2xl bg-slate-900 border border-slate-700 text-slate-300 hover:text-white text-xs font-bold transition-all">
+      ← Previous Slide
+    </button>
+
+    <div class="hidden sm:flex items-center gap-2 text-xs text-slate-400">
+      <span>Use <kbd class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-mono text-[10px]">←</kbd> <kbd class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-mono text-[10px]">→</kbd> or Spacebar</span>
+    </div>
+
+    <button onclick="nextSlide()" class="flex items-center gap-1.5 px-5 py-2 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow-lg transition-all">
+      Next Slide →
+    </button>
+  </footer>
+
+  <script>
+    let currentSlide = 1;
+    const totalSlides = 10;
+
+    function renderIndicators() {
+      const container = document.getElementById('indicators');
+      container.innerHTML = '';
+      for (let i = 1; i <= totalSlides; i++) {
+        const dot = document.createElement('button');
+        dot.className = `h-2 rounded-full transition-all duration-300 ${currentSlide === i ? 'w-6 bg-emerald-400' : 'w-2 bg-slate-800 hover:bg-slate-700'}`;
+        dot.onclick = () => goToSlide(i);
+        container.appendChild(dot);
+      }
+    }
+
+    function showSlide(n) {
+      document.querySelectorAll('.slide').forEach(s => s.classList.remove('active'));
+      const active = document.querySelector(`.slide[data-slide="${n}"]`);
+      if (active) active.classList.add('active');
+      renderIndicators();
+    }
+
+    function nextSlide() {
+      currentSlide = currentSlide < totalSlides ? currentSlide + 1 : 1;
+      showSlide(currentSlide);
+    }
+
+    function prevSlide() {
+      currentSlide = currentSlide > 1 ? currentSlide - 1 : totalSlides;
+      showSlide(currentSlide);
+    }
+
+    function goToSlide(n) {
+      currentSlide = n;
+      showSlide(currentSlide);
+    }
+
+    function toggleFullscreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(() => {});
+      } else {
+        if (document.exitFullscreen) document.exitFullscreen();
+      }
+    }
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ') {
+        e.preventDefault();
+        nextSlide();
+      } else if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        prevSlide();
+      } else if (e.key === 'f' || e.key === 'F') {
+        toggleFullscreen();
+      }
+    });
+
+    renderIndicators();
+  </script>
+</body>
+</html>

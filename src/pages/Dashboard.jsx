@@ -116,11 +116,90 @@ export default function Dashboard() {
               Personalized AQI Threshold Alert (Threshold: {aqiThreshold} AQI)
             </span>
             <p className="leading-relaxed">
-              Air quality in <strong>{location.name}</strong> is currently at <strong>AQI {aq.aqi} ({aq.category})</strong>, exceeding your configured notification limit of {aqiThreshold}. Wear an N95 mask and limit outdoor cardio.
+              Air quality in <strong>{location.name}</strong> is currently at <strong>AQI {aq?.aqi} ({aq?.category})</strong>, exceeding your configured notification limit of {aqiThreshold}. Wear an N95 mask and limit outdoor cardio.
             </p>
           </div>
         </div>
       )}
+
+      {/* Slide 5 Unified Cockpit Status Bar: AQI | Microclimate | Personal Eco Score */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {/* Card 1: Air Quality Index */}
+        <div className="p-4 rounded-2xl glass-card border border-emerald-500/20 flex flex-col justify-between">
+          <div className="flex items-center justify-between text-xs font-bold">
+            <span className="text-slate-400 uppercase tracking-wider">Air Quality Index</span>
+            <span 
+              className="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase"
+              style={{ backgroundColor: `${aq?.color || '#EF4444'}20`, color: aq?.color || '#EF4444' }}
+            >
+              {aq?.category || 'Unhealthy'}
+            </span>
+          </div>
+          <div className="my-2 flex items-baseline gap-2">
+            <span className="text-3xl sm:text-4xl font-heading font-black text-slate-900 dark:text-white">
+              {aq?.aqi || 142}
+            </span>
+            <span className="text-xs text-slate-400 font-medium">PM2.5 Primary Driver</span>
+          </div>
+          <p className="text-[11px] text-slate-500 dark:text-slate-400 truncate">
+            {aq?.healthAdvice || 'Sensitive groups should limit intense outdoor activity.'}
+          </p>
+        </div>
+
+        {/* Card 2: Microclimate Telemetry */}
+        <div className="p-4 rounded-2xl glass-card border border-sky-500/20 flex flex-col justify-between">
+          <div className="flex items-center justify-between text-xs font-bold">
+            <span className="text-slate-400 uppercase tracking-wider">Microclimate Telemetry</span>
+            <span className="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase bg-sky-500/15 text-sky-600 dark:text-sky-400">
+              {location.name}
+            </span>
+          </div>
+          <div className="my-2 flex items-baseline gap-2">
+            <span className="text-3xl sm:text-4xl font-heading font-black text-slate-900 dark:text-white">
+              {wx?.temperature || 29}°C
+            </span>
+            <span className="text-xs text-slate-400 font-medium">{wx?.conditionText || 'Partly Cloudy'}</span>
+          </div>
+          <div className="text-[11px] text-slate-500 dark:text-slate-400 flex items-center justify-between">
+            <span>💧 Humidity: {wx?.humidity || 64}%</span>
+            <span>💨 Wind: {wx?.windSpeed || 14} km/h</span>
+          </div>
+        </div>
+
+        {/* Card 3: Personal Eco Score */}
+        <div className="p-4 rounded-2xl glass-card border border-amber-500/20 flex flex-col justify-between">
+          <div className="flex items-center justify-between text-xs font-bold">
+            <span className="text-slate-400 uppercase tracking-wider">Personal Eco Score</span>
+            <span className="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
+              Top 22%
+            </span>
+          </div>
+          <div className="my-2 flex items-baseline gap-2">
+            <span className="text-3xl sm:text-4xl font-heading font-black text-emerald-600 dark:text-emerald-400">
+              78<span className="text-xl text-slate-400 font-normal"> / 100</span>
+            </span>
+            <span className="text-xs text-emerald-500 font-semibold">+6 pts this month</span>
+          </div>
+          <p className="text-[11px] text-slate-500 dark:text-slate-400">
+            Annual Footprint: 1,840 kg CO₂/yr (Audit Saved)
+          </p>
+        </div>
+      </div>
+
+      {/* Top High-Leverage Action Banner matching Slide 5 */}
+      <div className="p-3.5 px-4 rounded-2xl bg-gradient-to-r from-emerald-500/15 via-teal-500/10 to-sky-500/15 border border-emerald-500/30 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs">
+        <div className="flex items-center gap-2.5">
+          <span className="px-2 py-0.5 rounded-full bg-emerald-500 text-white font-extrabold text-[10px] uppercase tracking-wider">
+            TOP ACTION
+          </span>
+          <span className="text-slate-800 dark:text-slate-200 font-medium">
+            Switch 2 commute days/week to electric metro: <strong>Potential saving of 320 kg CO₂/year</strong>
+          </span>
+        </div>
+        <span className="font-mono font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-xl border border-emerald-500/20 whitespace-nowrap">
+          +8 Eco Score Points
+        </span>
+      </div>
 
       {/* Daily Green Choice Quick-Log Widget */}
       <GreenChoiceWidget />

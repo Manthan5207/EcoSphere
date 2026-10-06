@@ -18,6 +18,7 @@ import Login from './pages/Login';
 import Onboarding from './pages/Onboarding';
 import Profile from './pages/Profile';
 import Leaderboard from './pages/Leaderboard';
+import PitchDeck from './pages/PitchDeck';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -30,6 +31,8 @@ function ScrollToTop() {
 function MainApp() {
   const { theme } = useStore();
   const { initAuthSubscriber } = useAuthStore();
+  const location = useLocation();
+  const isPitchDeck = location.pathname === '/pitch' || location.pathname === '/presentation';
 
   useEffect(() => {
     const unsub = initAuthSubscriber();
@@ -45,6 +48,18 @@ function MainApp() {
       document.documentElement.classList.remove('dark');
     }
   }, [theme]);
+
+  if (isPitchDeck) {
+    return (
+      <div className="min-h-screen bg-[#050C0E] text-slate-100">
+        <ScrollToTop />
+        <Routes>
+          <Route path="/pitch" element={<PitchDeck />} />
+          <Route path="/presentation" element={<PitchDeck />} />
+        </Routes>
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-col min-h-screen bg-[#F0FDF4] dark:bg-[#080E14] text-slate-800 dark:text-slate-100 transition-colors duration-300">
@@ -62,6 +77,8 @@ function MainApp() {
           <Route path="/actions" element={<ProtectedRoute><ActionPlan /></ProtectedRoute>} />
           <Route path="/leaderboard" element={<Leaderboard />} />
           <Route path="/learn" element={<Learn />} />
+          <Route path="/pitch" element={<PitchDeck />} />
+          <Route path="/presentation" element={<PitchDeck />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>

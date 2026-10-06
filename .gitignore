@@ -27,7 +27,11 @@ dist-ssr
 .env
 .env.local
 .env.production
+felo.env
 
 # Build caches and temporary artifacts
 .vite/
 scratch/
+EcoSphere - Understand. Simulate. Act..pdf
+*.pdf
+felo-skills/

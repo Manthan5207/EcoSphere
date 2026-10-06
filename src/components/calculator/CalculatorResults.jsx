@@ -241,6 +241,106 @@ export default function CalculatorResults({ footprint, onRecalculate }) {
         </div>
       </div>
 
+      {/* 4. Behavioral Engine: Ranked Potential Savings, Tree Translation & Rupee Dividend matching Slide 6 */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+        {/* Left: Ranked Potential Annual Savings Bars */}
+        <Card className="lg:col-span-7 p-6 space-y-4" hover={false}>
+          <div className="flex items-center justify-between">
+            <div>
+              <span className="text-[10px] font-bold uppercase text-emerald-500 tracking-wider">Quantified ROI</span>
+              <h3 className="text-base font-heading font-bold text-slate-900 dark:text-white">
+                Potential Annual CO₂ Savings (Ranked)
+              </h3>
+            </div>
+            <span className="text-xs text-slate-400 font-mono">KG CO₂ / YEAR</span>
+          </div>
+
+          <div className="space-y-3 pt-1">
+            {/* Action 1 */}
+            <div>
+              <div className="flex items-center justify-between text-xs mb-1">
+                <span className="font-semibold text-slate-800 dark:text-slate-200">Commute Mode Shift (Metro / Bus 3 days/week)</span>
+                <span className="font-bold text-emerald-500 font-mono">420 kg</span>
+              </div>
+              <div className="w-full h-3 rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden">
+                <div className="h-full bg-emerald-400 rounded-full" style={{ width: '100%' }}></div>
+              </div>
+            </div>
+
+            {/* Action 2 */}
+            <div>
+              <div className="flex items-center justify-between text-xs mb-1">
+                <span className="font-semibold text-slate-800 dark:text-slate-200">Home Energy Optimization (BLDC fans, LED + AC @ 24°C)</span>
+                <span className="font-bold text-sky-400 font-mono">280 kg</span>
+              </div>
+              <div className="w-full h-3 rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden">
+                <div className="h-full bg-sky-400 rounded-full" style={{ width: '67%' }}></div>
+              </div>
+            </div>
+
+            {/* Action 3 */}
+            <div>
+              <div className="flex items-center justify-between text-xs mb-1">
+                <span className="font-semibold text-slate-800 dark:text-slate-200">Plant-Rich Diet Swaps (4 low-footprint meals/week)</span>
+                <span className="font-bold text-amber-400 font-mono">190 kg</span>
+              </div>
+              <div className="w-full h-3 rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden">
+                <div className="h-full bg-amber-400 rounded-full" style={{ width: '45%' }}></div>
+              </div>
+            </div>
+
+            {/* Action 4 */}
+            <div>
+              <div className="flex items-center justify-between text-xs mb-1">
+                <span className="font-semibold text-slate-800 dark:text-slate-200">Consumption & Longevity (Reduced fast fashion / e-waste)</span>
+                <span className="font-bold text-purple-400 font-mono">110 kg</span>
+              </div>
+              <div className="w-full h-3 rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden">
+                <div className="h-full bg-purple-400 rounded-full" style={{ width: '26%' }}></div>
+              </div>
+            </div>
+          </div>
+        </Card>
+
+        {/* Right: Tree-Equivalent & Cost Dividend Cards matching Slide 6 */}
+        <div className="lg:col-span-5 flex flex-col justify-between space-y-4">
+          <div className="p-5 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-950 dark:text-emerald-100 flex items-start gap-3.5">
+            <div className="w-10 h-10 rounded-xl bg-emerald-500 text-white flex items-center justify-center shrink-0 shadow-glow-emerald">
+              <span className="text-xl">🌲</span>
+            </div>
+            <div className="space-y-1 text-xs">
+              <span className="text-[10px] uppercase font-bold text-emerald-600 dark:text-emerald-400 block tracking-wider">
+                TREE-EQUIVALENT TRANSLATION
+              </span>
+              <div className="text-xl font-heading font-black text-slate-900 dark:text-white">
+                ≈ 20 Mature Trees
+              </div>
+              <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
+                A 420 kg CO₂ reduction from commute mode-shifting equals the annual carbon sequestered by ~20 growing urban trees.
+              </p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 gap-3">
+            <div className="p-4 rounded-2xl bg-white/70 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800">
+              <span className="text-[10px] text-slate-400 uppercase font-bold block">Annual Cost Dividend</span>
+              <span className="text-lg font-heading font-black text-emerald-600 dark:text-emerald-400 mt-1 block">
+                ₹14,200 Saved / Year
+              </span>
+              <span className="text-[10px] text-slate-500 block">Fuel & electricity tariff</span>
+            </div>
+
+            <div className="p-4 rounded-2xl bg-white/70 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800">
+              <span className="text-[10px] text-slate-400 uppercase font-bold block">Community Badge</span>
+              <span className="text-sm font-heading font-bold text-sky-500 mt-1 block flex items-center gap-1">
+                <span>🏅</span> Delhi Transit Star
+              </span>
+              <span className="text-[10px] text-slate-500 block">Top 15% Commute Tier</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* 4. Action Buttons (CTA to Action Plan + Share Card + Recalculate) */}
       <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-6 rounded-3xl glass-card border border-emerald-500/20">
         <button
