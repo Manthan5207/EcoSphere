@@ -253,13 +253,14 @@ def create_report(toc_page_numbers=None):
     r = p_sub4.add_run("(2993512)")
     r.font.name = 'Times New Roman'; r.font.size = Pt(14); r.font.bold = True
 
-    # Student Details Table (4 Group Members)
-    tbl_cover = doc.add_table(rows=3, cols=2)
+    # Student Details Table (Group No. 14, 4 Members)
+    tbl_cover = doc.add_table(rows=4, cols=2)
     tbl_cover.alignment = WD_TABLE_ALIGNMENT.CENTER
     tbl_cover.autofit = False
     set_table_borders(tbl_cover, color="000000", sz="6", val="single")
 
     cover_data = [
+        ("Group No.", "Group No. 14"),
         ("Name", "1. Manthan Singh\n2. Aniket Pandey\n3. Hrushikesh Sangale\n4. Jayani Salgaonkar"),
         ("Roll no.", "119, 120, 121, 122"),
         ("Program", "Second Year Engineering – AIML")
@@ -371,7 +372,7 @@ def create_report(toc_page_numbers=None):
             r = p_cert_body.add_run(") ")
         r.font.name = 'Times New Roman'; r.font.size = Pt(12)
 
-    r = p_cert_body.add_run("of Third Semester of Artificial Intelligence and Machine Learning Engineering, Thakur Shyamnarayan Engineering College, Kandivali East, Mumbai have completed the Mini Project satisfactorily in Course ")
+    r = p_cert_body.add_run("of Group No. 14, Third Semester of Artificial Intelligence and Machine Learning Engineering, Thakur Shyamnarayan Engineering College, Kandivali East, Mumbai have completed the Mini Project satisfactorily in Course ")
     r.font.name = 'Times New Roman'; r.font.size = Pt(12)
     r_crs = p_cert_body.add_run("Environmental science for Engineers (ESE) (2993512)")
     r_crs.font.name = 'Times New Roman'; r_crs.font.size = Pt(12); r_crs.font.bold = True

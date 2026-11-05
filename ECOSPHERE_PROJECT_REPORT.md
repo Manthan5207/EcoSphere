@@ -10,6 +10,7 @@
 
 | Field | Details |
 | :--- | :--- |
+| **Group No.** | Group No. 14 |
 | **Name** | 1. Manthan Singh<br>2. Aniket Pandey<br>3. Hrushikesh Sangale<br>4. Jayani Salgaonkar |
 | **Roll no.** | 119, 120, 121, 122 |
 | **Program** | Second Year Engineering – AIML |
@@ -37,7 +38,7 @@
 
 ## **Certificate**
 
-This is to certify that **Mr. Manthan Singh (Roll No. 119), Mr. Aniket Pandey (Roll No. 120), Mr. Hrushikesh Sangale (Roll No. 121), and Ms. Jayani Salgaonkar (Roll No. 122)** of **Third Semester of Artificial Intelligence and Machine Learning Engineering**, *Thakur Shyamnarayan Engineering College, Kandivali East, Mumbai* have completed the **Mini Project** satisfactorily in Course **Environmental science for Engineers (ESE) (2993512)** as per the prescribed syllabus of **University of Mumbai** for the academic year **2026 to 2027**.
+This is to certify that **Mr. Manthan Singh (Roll No. 119), Mr. Aniket Pandey (Roll No. 120), Mr. Hrushikesh Sangale (Roll No. 121), and Ms. Jayani Salgaonkar (Roll No. 122)** of **Group No. 14**, **Third Semester of Artificial Intelligence and Machine Learning Engineering**, *Thakur Shyamnarayan Engineering College, Kandivali East, Mumbai* have completed the **Mini Project** satisfactorily in Course **Environmental science for Engineers (ESE) (2993512)** as per the prescribed syllabus of **University of Mumbai** for the academic year **2026 to 2027**.
 
 **Place:** Mumbai  
 **Date:** 06/11/2026  
