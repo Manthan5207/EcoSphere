@@ -34,4 +34,5 @@ felo.env
 scratch/
 EcoSphere - Understand. Simulate. Act..pdf
 *.pdf
+!EcoSphere_ESE_Project_Report.pdf
 felo-skills/
